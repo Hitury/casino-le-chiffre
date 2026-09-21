@@ -1,0 +1,25 @@
+name: Nachtelijke Simulatie
+
+on:
+  schedule:
+      - cron: "0 1 * * *"
+
+jobs:
+  testen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Ophalen
+        uses: actions/checkout@v4
+      - name: Installeer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Requirements installeren
+        run: pip install -r requirements.txt
+      - name: Simulatie draaien
+        run: python simulatie.py 1000000 | tee resultaat.txt
+      - name: Resultaat opslaan
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulatie-resultaat
+          path: resultaat.txt
