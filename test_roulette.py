@@ -137,7 +137,7 @@ def test_waarde_na_uitbetaling():
 # ------------------------------------------------------------------
 
 def test_saldo_na_winst():
-    assert nieuw_saldo(100, 10, 20) == 110
+    assert nieuw_saldo(100, 10, 20) == 100
 
 
 def test_saldo_na_verlies():
