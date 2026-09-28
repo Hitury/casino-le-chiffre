@@ -41,6 +41,9 @@ def test_wisselen_van_negatief_bedrag_mag_niet():
 def test_wisselen_van_halve_euro_mag_niet():
     with pytest.raises(ValueError):
         euro_naar_fiches(12.50)
+def test_wisselen_van_letter_aantal():
+    with pytest.raises(TypeError):
+        euro_naar_fiches("twaalf");
 
 
 # ------------------------------------------------------------------
@@ -124,6 +127,9 @@ def test_winst_op_een_nummer_levert_zesendertig_keer_de_inzet_op():
 def test_inzet_van_nul_mag_niet():
     with pytest.raises(ValueError):
         bereken_uitbetaling("rood", None, 0, 3)
+
+def test_waarde_na_uitbetaling():
+    assert nieuw_saldo(1000, 100, 50) == 950
 
 
 # ------------------------------------------------------------------
